@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata|Montserrat&display=swap');
+
+$theme-primary:#021D44;
+$theme-primary-hover:#FF3E55;
+$white: #ffffff;
+
+body {
+    font-family: 'Montserrat', sans-serif !important;
+    color:#ffffff;
+  }
+
+.theme-color{
+    color: $theme-primary;
+}
+
+.theme-color-hover{
+    color: $theme-primary-hover;
+}
+
+.navbar{
+    .brand{
+        text-align: left;
+        color: #ffffff;
+        transition: color 0.5s ease-in-out;
+        &:hover{
+            text-decoration: none;
+            color:$theme-primary-hover;
+            
+        }
+        .logo-text{
+            font-size: 1.2rem !important ;
+            font-family:'Inconsolata', monospace;
+        }
+    }
+    .navbar-nav{
+        .nav-item{
+            .nav-link{
+                font-family:'Inconsolata', monospace;
+                letter-spacing: 4px;
+                color: #ffffff !important;
+                &:hover{
+                    color:$theme-primary-hover !important;
+                }
+            }
+        }
+    }
+}
+.home-content{
+    color:#ffffff;
+    height: 95vh;
+}
+.content{
+    margin-top: 68px;
+    color:#ffffff;
+    min-height: 95vh;
+}
+.pages{
+    margin-top: 80px;
+    
+}
+
+
+.particles-bg {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -10;
+    top: 0;
+    left: 0;
+    background:linear-gradient(180deg,#021D44 0,#114b8b);
+    canvas{
+        display: block;
+        vertical-align: bottom;
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+        -webkit-transition: opacity .8s ease, -webkit-transform 1.4s ease;
+        transition: opacity .8s ease, transform 1.4s ease
+    }
+}
+
+.admin-card{
+    background-color: transparent !important;
+    border: 2px solid $theme-primary-hover !important;
+    color: $white;
+}
+
+
+
+/*Button Styling*/
+
+.btn-primary{
+    border:2px solid $theme-primary-hover !important;
+    background-color:transparent !important;
+    &:hover{
+        background-color: $theme-primary !important;
+    }
+    &:focus{
+        box-shadow: none !important;
+    }
+    &:active{
+        box-shadow: none !important;
+    }
+}
