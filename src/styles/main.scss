@@ -2,6 +2,8 @@
 
 $theme-primary:#021D44;
 $theme-primary-hover:#FF3E55;
+
+$theme-primary-hover-light:#e37885;
 $white: #ffffff;
 
 body {
@@ -60,13 +62,21 @@ a{
 .content{
     margin-top: 68px;
     color:#ffffff;
-    min-height: 95vh;
+    min-height: 83vh;
 }
 .pages{
     margin-top: 80px;
     
 }
 
+.social{
+    font-size: 25px;
+    color:$theme-primary-hover;
+    transition: color 0.5s ease-in-out;
+    &:hover{
+        color:$theme-primary-hover-light;
+    }
+}
 
 .particles-bg {
     width: 100%;
@@ -118,14 +128,27 @@ a{
 
 .btn-primary{
     border:2px solid $theme-primary-hover !important;
-    background-color:transparent !important;
+    background:transparent !important;
+    
     &:hover{
-        background-color: $theme-primary !important;
+        background: $theme-primary !important;
     }
     &:focus{
         box-shadow: none !important;
     }
     &:active{
         box-shadow: none !important;
+    }
+}
+.VictoryContainer{
+    border-radius:1.2rem !important;
+    background: rgba(17, 40, 88, 0.2);
+    box-shadow: 0 5px 15px #000000, 0 2px 3px #105cad;
+    tspan{
+        fill:$theme-primary-hover !important;
+    }
+
+    line{
+        stroke:$theme-primary-hover !important;
     }
 }

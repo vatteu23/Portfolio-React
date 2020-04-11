@@ -12,6 +12,8 @@ import PrivateRoute from './components/privateroute';
 import CardButton from './components/cardbutton';
 import AddNewProject from './components/addnewproject';
 import Portfolio from './components/portfolio';
+import Report from './components/report';
+import Contact from './components/contact';
 import { UPDATE_USER, SIGN_OUT, UPDATE_LOG } from "./js/actions/index";
 
 const mapStateToProps = state => {
@@ -37,6 +39,13 @@ class App extends Component {
       user: null
     }
   };
+  handleSignOut = () => {
+    fbAuth.signOut().then(() => {
+      this.props.SIGN_OUT();
+    }).catch(function (error) {
+      // An error happened.
+    });
+  }
 
 
   componentDidMount = () =>{
@@ -66,9 +75,11 @@ class App extends Component {
           <Route path="/admin-login" component={Login} />
             <Route path="/home" component={Home} />
             <Route path="/portfolio" component={Portfolio} />
+            <Route path="/contact" component={Contact} />
             <Redirect from="/" exact to="/home" component={Home} />
             <PrivateRoute exact path="/dashboard" component={Dashboard} authenticated={this.props.authenticated} redirecturl="/dashboard" />
             <PrivateRoute exact path="/addnewproject" component={AddNewProject} authenticated={this.props.authenticated} redirecturl="/addnewproject" />
+            <PrivateRoute exact path="/report" component={Report} authenticated={this.props.authenticated} redirecturl="/report" />
             <Redirect to="/not-found" />
           </Switch>
           {this.props.authenticated ?

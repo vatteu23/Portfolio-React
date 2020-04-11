@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { UPDATE_LOG } from "../js/actions/index";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import CardButton from './cardbutton';
+
 
 
 const mapStateToProps = state => {
@@ -21,16 +22,18 @@ class Dashboard extends Component {
     constructor() {
         super();
         this.state = {
-          loading: true,
-          authenticated: false,
-          user: null
+            loading: true,
+            authenticated: false,
+            user: null
         }
-      };
+    };
 
     componentDidMount = () => {
         document.title = "Uday K Vatti | Web Developer";
         //this.props.UPDATE_LOG('HomePage');
+        
     }
+
 
     render() {
         return (
@@ -41,12 +44,21 @@ class Dashboard extends Component {
                         <div className="row mt-5">
                             <div className="col-6 col-md-4">
                                 <CardButton
-                                Title="Add New Project"
-                                Description="projects will display on portfolio page"
-                                Link="/addnewproject"
+                                    Title="Add New Project"
+                                    Description="projects will display on portfolio page"
+                                    Link="/addnewproject"
+                                />
+                            </div>
+                            <div className="col-6 col-md-4">
+                                <CardButton
+                                    Title="Website Stats"
+                                    Description="Website Views"
+                                    Link="/report"
                                 />
                             </div>
                         </div>
+
+                       
                     </div>
                 </div>
             </React.Fragment>

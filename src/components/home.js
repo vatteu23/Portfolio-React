@@ -29,7 +29,7 @@ class Home extends Component {
       
     componentDidMount = () => {
         document.title = "Uday K Vatti | Web Developer";
-        //this.props.UPDATE_LOG('HomePage')
+        this.props.UPDATE_LOG('HomePage')
     }
 
     render() {
@@ -37,7 +37,8 @@ class Home extends Component {
             <React.Fragment>
                 <div className="home-content">
                     <div className="container h-100 justify-content-center d-flex flex-column align-items-center">
-                        <h1>Hello, I'm <span className="theme-color-hover">Uday Vatti.</span><br/>I'm a Web Developer.</h1>
+                        <h1>Hello, I'm <span className="theme-color-hover">Uday Vatti.</span><br/>
+                        <span style={{fontSize:'2rem'}}>I'm a Web Developer.</span></h1>
                         <br/>
                         <Link to='/portfolio' className="d-block btn btn-primary">View my work</Link>
                     </div>

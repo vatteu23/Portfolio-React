@@ -29,8 +29,8 @@ class Portfolio extends Component {
     };
 
     componentDidMount = () => {
-        document.title = "Uday K Vatti | Web Developer";
-        //this.props.UPDATE_LOG("PortfolioPage");
+        document.title = "Portfolio | Uday Vatti";
+        this.props.UPDATE_LOG("PortfolioPage");
         this.getProjectList();
     }
 
@@ -41,7 +41,6 @@ class Portfolio extends Component {
         dref.orderByChild("title").once("value", snapshot => {
 
             if (snapshot) {
-                console.log(snapshot.val());
                 this.setState({ projects: snapshot.val() })
             }
         })

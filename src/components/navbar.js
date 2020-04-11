@@ -22,11 +22,11 @@ class NavBar extends Component {
   render(){
   return (
     <React.Fragment>
-    <nav className=" navbar navbar-expand-sm navbar-light">
+    <nav className="p-0 navbar navbar-expand-sm navbar-light">
       <div className="container">
         <Link className="brand" to="/">
         
-         <h6 className="logo-text">Uday <br/> Vatti</h6>
+         <h6 className="logo-text mb-0">Uday <br/> Vatti</h6>
         </Link>
         
          
