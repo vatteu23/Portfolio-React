@@ -21,9 +21,9 @@ class AddNewProject extends Component {
     }
 
 
-    handleAddNewProject = (title,description,url,technolgoies,role,startdate,enddate,image)=>{
+    handleAddNewProject = (title,description,url,technolgoies,role,startdate,enddate,order,image)=>{
        
-       if(title && description && url && technolgoies && role && startdate && enddate && image){
+       if(title && description && url && technolgoies && role && startdate && enddate && order && image){
 
         const projectID = db.ref('/projects').push();
         projectID.set({
@@ -35,6 +35,7 @@ class AddNewProject extends Component {
             role:role,
             startdate:startdate,
             enddate:enddate,
+            sort:order,
             image:image
         },
         function(error){
@@ -126,6 +127,12 @@ class AddNewProject extends Component {
                                         onChange={this.updateState} />
                                 </div>
                                 <div className="form-group">
+                                    <label htmlFor="project_ordernumber">Order Number</label>
+                                    <input type="text" className="form-control" 
+                                    value={this.state.project_ordernumber} id="project_ordernumber" placeholder="Order number  "
+                                        onChange={this.updateState} />
+                                </div>
+                                <div className="form-group">
                                     <label htmlFor="project_image">Image / Screenshot</label>
                                     <input type="text" className="form-control" 
                                     value={this.state.project_image} id="project_image" placeholder="Project Image "
@@ -140,6 +147,7 @@ class AddNewProject extends Component {
                                     this.state.project_role,
                                     this.state.project_startdate,
                                     this.state.project_enddate,
+                                    this.state.project_ordernumber,
                                     this.state.project_image)} className="btn btn-primary">SUBMIT</button>
 
                             </div>
