@@ -22,6 +22,9 @@ a{
     text-decoration: none !important;
 }
 .navbar{
+    
+   
+
     .brand{
         text-align: left;
         color: #ffffff;
@@ -52,7 +55,16 @@ a{
     .navbar-collapse{
         @media(max-width:518px) {
             background-color: $theme-primary;
+            opacity: 0;
+            transition:  height 1s ease-in-out, opacity 1s ease-in-out;
+            
+            display: block !important;
+            height: 0px !important;
         }
+    }
+    .nav-show{
+        opacity: 1;
+        height: 120px !important;
     }
 }
 .home-content{
@@ -88,7 +100,6 @@ a{
     background:linear-gradient(180deg,#021D44 0,#114b8b);
     canvas{
         display: block;
-        vertical-align: bottom;
         -webkit-transform: scale(1);
         -ms-transform: scale(1);
         transform: scale(1);
