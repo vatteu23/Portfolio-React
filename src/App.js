@@ -15,6 +15,7 @@ import Portfolio from "./components/portfolio";
 import Report from "./components/report";
 import Contact from "./components/contact";
 import ScrollToTop from "./components/scrolltotop";
+import Email from "./components/email";
 import { UPDATE_USER, SIGN_OUT, UPDATE_LOG } from "./js/actions/index";
 
 const mapStateToProps = (state) => {
@@ -142,6 +143,13 @@ class App extends Component {
             authenticated={this.props.authenticated}
             redirecturl="/addnewproject"
           />
+          <PrivateRoute
+            exact
+            path="/emails"
+            component={Email}
+            authenticated={this.props.authenticated}
+            redirecturl="/emails"
+          />
 
           <Redirect to="/not-found" />
         </Switch>
@@ -157,6 +165,13 @@ class App extends Component {
                         <CardButton
                           Link="/dashboard"
                           Title="Dashboard"
+                          Description=" "
+                        />
+                      </div>
+                      <div className="col-6">
+                        <CardButton
+                          Link="/emails"
+                          Title="Emails"
                           Description=" "
                         />
                       </div>

@@ -59,10 +59,12 @@ a{
             transition:  height 1s ease-in-out, opacity 1s ease-in-out;
             
             display: block !important;
+            visibility: hidden;
             height: 0px !important;
         }
     }
     .nav-show{
+        visibility: visible;
         opacity: 1;
         height: 120px !important;
     }
@@ -135,7 +137,11 @@ a{
 }
 
 .avatar{
-    max-width: 300px ;
+    height: 200px !important;
+    transition: height 0.3s ease-in-out;
+    &:hover{
+        height: 245px !important;
+    }
 }
 
 /*Button Styling*/
