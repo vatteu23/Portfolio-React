@@ -58,6 +58,16 @@ class NavBar extends Component {
                     className="nav-link"
                     onClick={() => this.showHamburgerMenu(false)}
                     activeClassName="nav-link-selected"
+                    to="/about"
+                  >
+                    About
+                  </NavLink>
+                </li>
+                <li className="nav-item mx-2">
+                  <NavLink
+                    className="nav-link"
+                    onClick={() => this.showHamburgerMenu(false)}
+                    activeClassName="nav-link-selected"
                     to="/portfolio"
                   >
                     Portfolio

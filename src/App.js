@@ -16,6 +16,7 @@ import Report from "./components/report";
 import Contact from "./components/contact";
 import ScrollToTop from "./components/scrolltotop";
 import Email from "./components/email";
+import About from "./components/about";
 import { UPDATE_USER, SIGN_OUT, UPDATE_LOG } from "./js/actions/index";
 
 const mapStateToProps = (state) => {
@@ -122,6 +123,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/portfolio" component={Portfolio} />
           <Route path="/contact" component={Contact} />
+          <Route path="/about" component={About} />
           <PrivateRoute
             exact
             path="/report"
