@@ -21,7 +21,7 @@ class NavBar extends Component {
         <nav className="p-0 navbar navbar-expand-sm navbar-light">
           <div className="container">
             <Link className="brand" to="/">
-              <h6 className="logo-text mb-0">
+              <h6 className="logo-text mb-0 gradient-text">
                 Uday <br /> Vatti
               </h6>
             </Link>

@@ -135,13 +135,27 @@ class Report extends Component {
     return 1 + Math.ceil((n1stThursday - date) / 604800000);
   };
 
+  getViewsByPage = (data, PageName) => {
+
+    let rows = Object.keys(data).filter((row, index) => { return data[row]["Page"] === PageName; })
+    return rows.length;
+
+  }
+
   getData = () => {
     let dref = db.ref("/pagevisitlogs");
 
     dref.orderByChild("title").once("value", (snapshot) => {
       if (snapshot) {
         this.setState({ pagevisits: snapshot.val() });
-
+        let homepageviews = this.getViewsByPage(snapshot.val(), "HomePage");
+        let portfolioviews = this.getViewsByPage(snapshot.val(), "PortfolioPage");
+        let aboutviews = this.getViewsByPage(snapshot.val(), "AboutPage");
+        let contactviews = this.getViewsByPage(snapshot.val(), "ContactPage")
+        this.setState({
+          homepageviews: homepageviews, portfolioviews: portfolioviews,
+          aboutviews: aboutviews, contactviews: contactviews
+        })
         this.getStats();
       }
     });
@@ -151,10 +165,35 @@ class Report extends Component {
       <React.Fragment>
         <div className="content">
           <div className="container pages">
-            <h2 className="">Website Stats</h2>
-            <div className="row mt-5">
-              <div className="col-12 text-left"></div>
-              <div className="col-12 col-md-8">
+            <h2 className="gradient-text">Website Stats</h2>
+            <div className="row ">
+              <div className="col-12 flex-wrap justify-content-center mb-5 d-flex flex-row">
+              <div className="card mx-2 report-card mb-2" style={{width: '175px'}}>
+                  <div className="card-body ">
+                    <h5 className="card-title report-views-title gradient-text">{this.state.homepageviews}</h5>
+                    <h6 className="card-subtitle mb-2 text-muted">Home Views</h6>
+                  </div>
+                </div>
+                <div className="card mx-2 report-card mb-2" style={{width: '175px'}}>
+                  <div className="card-body">
+                    <h5 className="card-title report-views-title gradient-text">{this.state.portfolioviews}</h5>
+                    <h6 className="card-subtitle mb-2 text-muted">Portfolio Views</h6>
+                  </div>
+                </div>
+                <div className="card mx-2 report-card mb-2" style={{width: '175px'}}>
+                  <div className="card-body">
+                    <h5 className="card-title report-views-title gradient-text">{this.state.aboutviews}</h5>
+                    <h6 className="card-subtitle mb-2 text-muted">About Views</h6>
+                  </div>
+                </div>
+                <div className="card mx-2 report-card mb-2" style={{width: '175px'}}>
+                  <div className="card-body">
+                    <h5 className="card-title report-views-title gradient-text">{this.state.contactviews}</h5>
+                    <h6 className="card-subtitle mb-2 text-muted">Contact Views</h6>
+                  </div>
+                </div>
+              </div>
+              <div className="col-12 justify-content-center col-md-8">
                 {this.state.visitsData ? (
                   <div>
                     <VictoryChart
@@ -174,7 +213,7 @@ class Report extends Component {
                       />
                       <VictoryLine
                         style={{
-                          data: { stroke: "#FF3E55", background: "white" },
+                          data: { stroke: "#7d7d7d", background: "white" },
                         }}
                         data={this.state.visitsData}
                         labels={({ datum }) => datum.y}

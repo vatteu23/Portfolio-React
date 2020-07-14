@@ -67,12 +67,12 @@ class Contact extends Component {
     return (
       <React.Fragment>
         <div className="content">
-          <div className="container pages">
+          <div className="container mt-4">
             <div className="row">
               <div className="col-12">
-                <h2 className="text-left mb-3">Get In Touch</h2>
+                <h2 className="text-left mb-3 gradient-text">Get In Touch</h2>
 
-                <div className="mb-5 col-12 col-md-6 text-left">
+                <div className="mb-5 mt-3 col-12 col-md-6 text-left">
                   <div className="form-group">
                     <input
                       type="text"

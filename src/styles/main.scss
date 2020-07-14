@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata|Montserrat&display=swap');
 
-$theme-primary:#021D44;
-$theme-primary-hover:#FF3E55;
-
+$theme-primary:#212121;
+$theme-primary-hover:#7d7d7d;
+$theme-primary-hover-dark:#272727;
+$theme-primary-hover-extra-dark:#333333;
 $theme-primary-hover-light:#e37885;
 $white: #ffffff;
 
@@ -10,7 +11,9 @@ body {
     font-family: 'Montserrat', sans-serif !important;
     color:#ffffff;
   }
-
+button:focus{
+    outline: none !important;
+}
 .theme-color{
     color: $theme-primary;
 }
@@ -18,13 +21,15 @@ body {
 .theme-color-hover{
     color: $theme-primary-hover;
 }
+
+.theme-color-hover-extra-dark{
+    color:$theme-primary-hover-extra-dark;
+}
+
 a{
     text-decoration: none !important;
 }
 .navbar{
-    
-   
-
     .brand{
         text-align: left;
         color: #ffffff;
@@ -56,7 +61,7 @@ a{
         @media(max-width:518px) {
             background-color: $theme-primary;
             opacity: 0;
-            transition:  height 1s ease-in-out, opacity 1s ease-in-out;
+            transition:  height 0.5s ease-in-out, opacity 1s ease-in-out;
             
             display: block !important;
             visibility: hidden;
@@ -66,17 +71,17 @@ a{
     .nav-show{
         visibility: visible;
         opacity: 1;
+        margin-bottom: 20px !important;
         height: 120px !important;
     }
 }
 .home-content{
     color:#ffffff;
-    height: 88vh;
+    height: 82vh;
 }
 .content{
-    margin-top: 68px;
     color:#ffffff;
-    min-height: 83vh;
+    min-height: 78vh;
 }
 .pages{
     margin-top: 80px;
@@ -88,7 +93,7 @@ a{
     color:$theme-primary-hover;
     transition: color 0.5s ease-in-out;
     &:hover{
-        color:$theme-primary-hover-light;
+        color:$white;
     }
 }
 
@@ -99,7 +104,7 @@ a{
     z-index: -10;
     top: 0;
     left: 0;
-    background:linear-gradient(180deg,#021D44 0,#114b8b);
+    background:#212121;
     canvas{
         display: block;
         -webkit-transform: scale(1);
@@ -119,17 +124,16 @@ a{
 
 
 .card-project{
-    border-radius:1.2rem !important;
-    box-shadow: 0 5px 15px #000000, 0 2px 3px #105cad;
-    background:transparent !important;
+    border-radius:0px !important;
+    background:$theme-primary-hover-dark !important;
     transition: box-shadow 0.5s ease-in-out;
     color: $theme-primary-hover !important;
     &:hover{
-        box-shadow: 0 5px 15px #000000, 0 2px 3px #105cad;
+        box-shadow: 0 5px 15px #000000, 0 2px 3px $theme-primary;
     }
     &-image-background{
         height: 200px;
-        border-radius:1.2rem 1.2rem 0 0 !important;
+        border-radius: 0 0 !important;
         background-size:cover;
         background-position: center;
     }
@@ -151,7 +155,7 @@ a{
     background:transparent !important;
     
     &:hover{
-        background: $theme-primary !important;
+        background: $theme-primary-hover-extra-dark !important;
     }
     &:focus{
         box-shadow: none !important;
@@ -160,15 +164,78 @@ a{
         box-shadow: none !important;
     }
 }
+
+.footer{
+    padding: 10px;
+    border-top: 2px solid $theme-primary-hover-extra-dark;
+    color: $white;
+    font-family:'Inconsolata', monospace;
+}
+
 .VictoryContainer{
     border-radius:1.2rem !important;
-    background: rgba(17, 40, 88, 0.2);
-    box-shadow: 0 5px 15px #000000, 0 2px 3px #105cad;
+    background: rgba(34, 34, 34,0.2);
+    box-shadow: 0 5px 15px #000000, 0 2px 3px $theme-primary-hover-dark;
     tspan{
         fill:$theme-primary-hover !important;
     }
 
     line{
-        stroke:$theme-primary-hover !important;
+        stroke:$theme-primary-hover-dark !important;
+    }
+}
+
+.vertical-timeline::before{
+    background-color: $theme-primary-hover;
+}
+
+.vertical-timeline{
+
+        .vertical-timeline-element-title{
+            color:$theme-primary-hover;
+        }
+        .vertical-timeline-element-description{
+            color:$theme-primary-hover !important;
+        }
+}
+
+
+.gradient-text{
+    
+    background:linear-gradient(60.28deg,$theme-primary-hover,#ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.report-card{
+    border:none !important;
+    .card-body{
+        background-color: $theme-primary-hover-extra-dark;
+
+    }
+    .gradient-text{
+    
+        background:linear-gradient(60.28deg,$theme-primary-hover-extra-dark,#ffffff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .report-views-title{
+        font-size: 2rem;
+        font-weight: 800;
+    }
+    
+}
+
+
+.emails-list{
+
+    .list-group-item{
+        background-color:$theme-primary-hover-extra-dark;
+        color:$theme-primary-hover;
+    }
+    .list-group-item.email-unread{
+        background-color:$theme-primary-hover;
+        color:$theme-primary-hover-extra-dark;
     }
 }

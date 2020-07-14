@@ -17,6 +17,7 @@ import Contact from "./components/contact";
 import ScrollToTop from "./components/scrolltotop";
 import Email from "./components/email";
 import About from "./components/about";
+import Footer from './components/footer';
 import { UPDATE_USER, SIGN_OUT, UPDATE_LOG } from "./js/actions/index";
 
 const mapStateToProps = (state) => {
@@ -75,7 +76,7 @@ class App extends Component {
           params={{
             particles: {
               number: {
-                value: 60,
+                value: 100,
                 density: {
                   enable: true,
                   value_area: 1500,
@@ -155,6 +156,7 @@ class App extends Component {
 
           <Redirect to="/not-found" />
         </Switch>
+        <Footer/>
         {this.props.authenticated ? (
           <div className="container my-5">
             <div className="row">

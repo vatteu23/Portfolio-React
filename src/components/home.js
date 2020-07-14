@@ -38,8 +38,8 @@ class Home extends Component {
               src="https://firebasestorage.googleapis.com/v0/b/portfolio-react-f2bc7.appspot.com/o/images%2Favatar.png?alt=media&token=e5152858-5ec0-4523-bf9d-24a16d35dce6"
               className="img img-fluid avatar"
             />
-            <h1>
-              Hello, I'm <span className="theme-color-hover">Uday Vatti.</span>
+            <h1 className="theme-color-hover">
+              Hello, I'm <span  className="gradient-text">Uday Vatti.</span>
               <br />
               <span style={{ fontSize: "2rem" }}>I'm a Web Developer.</span>
             </h1>

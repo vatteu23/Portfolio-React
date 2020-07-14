@@ -52,8 +52,8 @@ class Portfolio extends Component {
     return (
       <React.Fragment>
         <div className="content">
-          <div className="container ">
-            <h2 className="text-left">Work and Projects</h2>
+          <div className="container mt-4">
+            <h2 className="text-left gradient-text">Work and Projects</h2>
             <div className="row mt-5">
               {this.state.projects
                 ? this.state.projectsOrder.map((id) => {

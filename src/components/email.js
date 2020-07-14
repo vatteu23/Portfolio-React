@@ -12,35 +12,58 @@ class Email extends Component {
   }
 
   componentDidMount = () => {
-    const cf_ref = db.ref("/contactform");
-    let emailsexist = false;
 
+    this.getEmails();
+  };
+
+
+  getEmails = () => {
+    const cf_ref = db.ref("/contactform");
     cf_ref.orderByChild("contactform_name").once("value", (snapshot) => {
       if (snapshot.val()) {
-        emailsexist = true;
         this.setState({ cflist: snapshot });
       }
     });
 
     let unreadCount = 0;
-    if (emailsexist) {
-      cf_ref
-        .orderByChild("contactform_viewed")
-        .equalTo(false)
-        .once("value", function (snapshot) {
-          return unreadCount;
-        })
-        .then((unreadCount) => {
-          let count;
-          if (unreadCount.val()) {
-            count = Object.keys(unreadCount.val()).length;
-          } else {
-            count = 0;
-          }
-          this.setState({ unreadCount: count });
-        });
-    }
-  };
+    cf_ref
+      .orderByChild("contactform_viewed")
+      .equalTo(false)
+      .once("value", function (snapshot) {
+        return unreadCount;
+      })
+      .then((unreadCount) => {
+        let count;
+        if (unreadCount.val()) {
+          count = Object.keys(unreadCount.val()).length;
+        } else {
+          count = 0;
+        }
+        this.setState({ unreadCount: count });
+
+      });
+  }
+
+
+  updateEmailViewedStatus = (updateState,id) => {
+    
+    let cf_id = id;
+    const cf_ref = db.ref("/contactform/" + cf_id);
+    cf_ref.update({
+      contactform_viewed: updateState
+    },
+      function (error) {
+        if (error) {
+          alert("Data could not be saved." + error);
+        } else {
+          alert("Updated Status Successfully.");
+          
+        }
+      })
+
+      this.getEmails();
+  }
+
 
   getNumberOfDaysAgo = (date) => {
     const date2 = new Date(Date.now());
@@ -56,37 +79,43 @@ class Email extends Component {
         <div className="container page-content">
           {this.state.cflist ? (
             <div className="my-3">
-              <p>{this.state.unreadCount} unread email(s)</p>
+              <h5 className="gradient-text">{this.state.unreadCount} unread email(s)</h5>
             </div>
           ) : null}
-          <div className="list-group">
+          <div className="list-group emails-list">
             {this.state.cflist
               ? Object.keys(this.state.cflist.val()).map((id) => {
-                  let cf = this.state.cflist.val();
-                  return (
+                let cf = this.state.cflist.val();
+                return (
+                  <div  key={id} className={
+                    "text-left list-group-item list-group-item-action no-text-decoration " +
+                    (cf[id]["contactform_viewed"] ? " " : "email-unread")
+                  }>
                     <Link
-                      key={id}
-                      className={
-                        "text-left list-group-item list-group-item-action no-text-decoration " +
-                        (cf[id]["contactform_viewed"] ? " " : "email-unread")
-                      }
-                      to={{ pathname: `/email-details/${[id]}` }}
+                     
+
+                      to={{ pathname: `/emails/${[id]}` }}
                     >
                       <div className="d-flex w-100 justify-content-between">
                         <h6 className="mb-2 text-dark">
                           <b>From:</b> {cf[id]["email"]}
                         </h6>
-                        <small>
+                        <small className="text-white">
                           {this.getNumberOfDaysAgo(cf[id]["created_at"])} day(s)
                           ago
                         </small>
                       </div>
-                      <small className="text-muted text-left">
+                      <small className="text-white text-left">
                         <b>SUBJECT:</b> {cf[id]["message"]}
-                      </small>
+                      </small><br />
+
                     </Link>
-                  );
-                })
+                    {cf[id]["contactform_viewed"] ?
+                      <button onClick={()=>{this.updateEmailViewedStatus(false,[id])}} className="btn btn-primary">Mark as Unread</button>
+                      : <button onClick={()=>{this.updateEmailViewedStatus(true,[id])}} className="btn btn-primary">Mark as Read</button>}
+                  </div>
+                );
+              })
               : null}
           </div>
         </div>
