@@ -42,6 +42,11 @@ class About extends Component {
                I am a Web Developer passionate about creating beautiful solutions and is inspired by Google Material Design.
                 I love photography and would see everything as a frame including Web Pages.
               </div>
+              <div className="col-12 text-center mt-3">
+                <a className="btn btn-primary" 
+                href="https://firebasestorage.googleapis.com/v0/b/portfolio-react-f2bc7.appspot.com/o/pdfs%2FResume.pdf?alt=media&token=2e38a77f-9c75-47ca-b3d8-b8db21834f3f"
+                target="_blank">View Resume</a>
+              </div>
               <div className="col-12 text-center mt-5">
               <h2 className="theme-color-hover">Work Experience</h2>
               </div>

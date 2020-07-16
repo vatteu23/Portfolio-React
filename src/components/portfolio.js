@@ -53,7 +53,12 @@ class Portfolio extends Component {
       <React.Fragment>
         <div className="content">
           <div className="container mt-4">
-            <h2 className="text-left gradient-text">Work and Projects</h2>
+            <div className="d-flex flex-row flex-wrap justify-content-center">
+            <h2 className="gradient-text align-self-center mr-md-auto mt-3 mb-0">Work and Projects</h2>
+            <a className="btn btn-primary ml-md-auto mt-3 align-self-center" 
+                href="https://firebasestorage.googleapis.com/v0/b/portfolio-react-f2bc7.appspot.com/o/pdfs%2FResume.pdf?alt=media&token=2e38a77f-9c75-47ca-b3d8-b8db21834f3f"
+                target="_blank">View Resume</a>
+            </div>
             <div className="row mt-5">
               {this.state.projects
                 ? this.state.projectsOrder.map((id) => {
