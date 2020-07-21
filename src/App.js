@@ -18,7 +18,7 @@ import ScrollToTop from "./components/scrolltotop";
 import Email from "./components/email";
 import About from "./components/about";
 import Footer from './components/footer';
-import { UPDATE_USER, SIGN_OUT, UPDATE_LOG } from "./js/actions/index";
+import { UPDATE_USER, SIGN_OUT } from "./js/actions/index";
 
 const mapStateToProps = (state) => {
   return state;
@@ -55,9 +55,15 @@ class App extends Component {
   };
 
   componentDidMount = () => {
+    
     fbAuth.onAuthStateChanged((user) => {
       if (user) {
         this.props.UPDATE_USER(user);
+        this.setState({
+          authenticated: this.props.logs.authenticated,
+          currentUser: this.props.logs.currentUser,
+          loading: false,
+        });
       } else {
         this.setState({
           authenticated: false,
@@ -69,6 +75,7 @@ class App extends Component {
   };
 
   render() {
+    
     return (
       <div className="App">
         <Particles
@@ -129,40 +136,40 @@ class App extends Component {
             exact
             path="/report"
             component={Report}
-            authenticated={this.props.authenticated}
+            authenticated={this.props.logs.authenticated}
             redirecturl="/report"
           />
           <PrivateRoute
             exact
             path="/dashboard"
             component={Dashboard}
-            authenticated={this.props.authenticated}
+            authenticated={this.props.logs.authenticated}
             redirecturl="/dashboard"
           />
           <PrivateRoute
             exact
             path="/addnewproject"
             component={AddNewProject}
-            authenticated={this.props.authenticated}
+            authenticated={this.props.logs.authenticated}
             redirecturl="/addnewproject"
           />
           <PrivateRoute
             exact
             path="/emails"
             component={Email}
-            authenticated={this.props.authenticated}
+            authenticated={this.props.logs.authenticated}
             redirecturl="/emails"
           />
 
           <Redirect to="/not-found" />
         </Switch>
         <Footer/>
-        {this.props.authenticated ? (
+        {this.props.logs.authenticated ? (
           <div className="container my-5">
             <div className="row">
               <div className="col-12">
                 <div className="card admin-card">
-                  <div className="card-header">{this.props.currentUser}</div>
+                  <div className="card-header">{this.props.logs.currentUser}</div>
                   <div className="card-body">
                     <div className="row">
                       <div className="col-6">

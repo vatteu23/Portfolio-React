@@ -239,3 +239,26 @@ a{
         color:$theme-primary-hover-extra-dark;
     }
 }
+
+.tile{
+    background-color: rgba(51,51,51,0.6);
+    padding: 20px;
+    margin: 10px;
+}
+
+.vertical-timeline-element-icon{
+    display: flex;
+}
+
+.title-medium{
+    font-size: 20px;
+    background:linear-gradient(170deg,#ffffff,$theme-primary-hover);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.div-contact-form{
+    max-width: 750px;
+    min-width: 350px;
+}

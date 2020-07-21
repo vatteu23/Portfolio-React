@@ -38,8 +38,7 @@ class Login extends Component {
   };
 
   render() {
-    if (this.props.authenticated) {
-      console.log(this.props.location);
+    if (this.props.logs.authenticated) {
       return <Redirect to={this.props.location.redirecturl} />;
     } else {
       return (

@@ -1,51 +1,37 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
 import { UPDATE_LOG } from "../js/actions/index";
 import { Link } from "react-router-dom";
 import { db } from "../firebase";
 import CardProject from "./cardproject";
+import fetchProjectsAction from "../js/selectors/getProjects";
+import {getProjectsError, getProjects, getProjectsPending, getProjectsOrderKeys} from "../js/reducers/projectsReducer";
 
-const mapStateToProps = (state) => {
-  return state;
-};
+const mapStateToProps = (state) => ({
+  error: getProjectsError(state),
+  projects: getProjects(state),
+  pending: getProjectsPending(state),
+  sortedKeys: getProjectsOrderKeys(state)
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    UPDATE_LOG: (PageName) => {
-      dispatch(UPDATE_LOG(PageName));
-    },
-  };
-};
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  fetchProjects: fetchProjectsAction,
+  updateLog : UPDATE_LOG
+},dispatch);
+
 class Portfolio extends Component {
   constructor() {
     super();
     this.state = {
-      loading: true,
-      authenticated: false,
-      user: null,
     };
   }
-
+ 
   componentDidMount = () => {
+    this.props.fetchProjects();
     document.title = "Portfolio | Uday Vatti";
-    this.props.UPDATE_LOG("PortfolioPage");
-    this.getProjectList();
-  };
-
-  getProjectList = () => {
-    let dref = db.ref("/projects");
-
-    dref.orderByChild("sort").once("value", (snapshot) => {
-      if (snapshot) {
-        let data = snapshot.val();
-
-        let sortedKeys = Object.keys(data).sort((a, b) => {
-          return data[a].sort - data[b].sort;
-        });
-
-        this.setState({ projects: data, projectsOrder: sortedKeys });
-      }
-    });
+    this.props.updateLog("PortfolioPage");
   };
 
   render() {
@@ -57,12 +43,14 @@ class Portfolio extends Component {
             <h2 className="gradient-text align-self-center mr-md-auto mt-3 mb-0">Work and Projects</h2>
             <a className="btn btn-primary ml-md-auto mt-3 align-self-center" 
                 href="https://firebasestorage.googleapis.com/v0/b/portfolio-react-f2bc7.appspot.com/o/pdfs%2FResume.pdf?alt=media&token=2e38a77f-9c75-47ca-b3d8-b8db21834f3f"
-                target="_blank">View Resume</a>
+                target="_blank">
+                
+                  View Resume</a>
             </div>
             <div className="row mt-5">
-              {this.state.projects
-                ? this.state.projectsOrder.map((id) => {
-                    let data = this.state.projects;
+              {this.props.projects.projects
+                ? this.props.sortedKeys.map((id) => {
+                    let data = this.props.projects.projects;
                     return (
                       <div className="col-12 col-sm-6 col-lg-4 my-3" key={id}>
                         <CardProject

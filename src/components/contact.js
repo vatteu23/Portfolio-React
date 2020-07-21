@@ -68,11 +68,27 @@ class Contact extends Component {
       <React.Fragment>
         <div className="content">
           <div className="container mt-4">
-            <div className="row">
-              <div className="col-12">
-                <h2 className="text-left mb-3 gradient-text">Get In Touch</h2>
-
-                <div className="mb-5 mt-3 col-12 col-md-6 text-left">
+                
+                <div className="d-flex flex-column align-items-center">
+             
+                <div className="d-flex flex-row mb-3">
+                <h2 className="  gradient-text">Get In Touch</h2>
+                  <a
+                    href="https://www.linkedin.com/in/vattiu/"
+                    className="ml-4 social"
+                    target="_blank"
+                  >
+                    <FaLinkedin />
+                  </a>
+                  <a
+                    href="https://github.com/vatteu23"
+                    className="ml-2 social"
+                    target="_blank"
+                  >
+                    <FaGithubSquare />
+                  </a>
+                </div>
+                <div className="mt-3 d-flex flex-column justify-content-center div-contact-form">
                   <div className="form-group">
                     <input
                       type="text"
@@ -118,25 +134,10 @@ class Contact extends Component {
                   </button>
                 </div>
 
-                <div className="d-flex flex-row mb-4">
-                  <a
-                    href="https://www.linkedin.com/in/vattiu/"
-                    className="ml-4 social"
-                    target="_blank"
-                  >
-                    <FaLinkedin />
-                  </a>
-                  <a
-                    href="https://github.com/vatteu23"
-                    className="ml-4 social"
-                    target="_blank"
-                  >
-                    <FaGithubSquare />
-                  </a>
-                </div>
+               
               </div>
-            </div>
-          </div>
+              </div>
+            
         </div>
       </React.Fragment>
     );
