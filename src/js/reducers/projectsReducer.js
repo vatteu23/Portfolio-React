@@ -1,4 +1,3 @@
-import { UPDATE_USER, SIGNOUT_USER, UPDATE_LOG, GET_GROUPLIST } from "../constants";
 import {FETCH_PROJECTS_ERROR, FETCH_PROJECTS_PENDING, FETCH_PROJECTS_SUCCESS} from "../actions";
 
 const initialState = {

@@ -2,10 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 import { UPDATE_LOG } from "../js/actions/index";
-import { Link } from "react-router-dom";
-import { db } from "../firebase";
 import CardProject from "./cardproject";
-import fetchProjectsAction from "../js/selectors/getProjects";
+import fetchProjectsAction from "../js/actioncreators/getProjects";
 import {getProjectsError, getProjects, getProjectsPending, getProjectsOrderKeys} from "../js/reducers/projectsReducer";
 
 const mapStateToProps = (state) => ({

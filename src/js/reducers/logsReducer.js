@@ -1,14 +1,9 @@
 import { UPDATE_USER, SIGNOUT_USER, UPDATE_LOG } from "../constants";
 
-const initialState = {
-   
-};
-
-
+const initialState = { };
 
 export default function logsReducer(state = initialState, action)  {
-    switch (action.type) {
-        
+    switch (action.type) {        
         case UPDATE_USER: {
             return {
                 ...state,
@@ -30,9 +25,7 @@ export default function logsReducer(state = initialState, action)  {
                 ...state,
                 logSuccess: action.status
             }
-
         }
-
         default:
             return state;
     }

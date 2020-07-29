@@ -46,6 +46,13 @@ class Dashboard extends Component {
               </div>
               <div className="col-6 col-md-4">
                 <CardButton
+                  Title="Add New Product"
+                  Description="products will display on products page"
+                  Link="/addnewproduct"
+                />
+              </div>
+              <div className="col-6 col-md-4">
+                <CardButton
                   Title="Website Stats"
                   Description="Website Views"
                   Link="/report"

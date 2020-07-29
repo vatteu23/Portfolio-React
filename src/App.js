@@ -11,6 +11,7 @@ import Login from "./components/login";
 import PrivateRoute from "./components/privateroute";
 import CardButton from "./components/cardbutton";
 import AddNewProject from "./components/addnewproject";
+import AddNewProduct from "./components/addnewproduct";
 import Portfolio from "./components/portfolio";
 import Report from "./components/report";
 import Contact from "./components/contact";
@@ -18,6 +19,7 @@ import ScrollToTop from "./components/scrolltotop";
 import Email from "./components/email";
 import About from "./components/about";
 import Footer from './components/footer';
+import Products from './components/products';
 import { UPDATE_USER, SIGN_OUT } from "./js/actions/index";
 
 const mapStateToProps = (state) => {
@@ -58,6 +60,7 @@ class App extends Component {
     
     fbAuth.onAuthStateChanged((user) => {
       if (user) {
+        console.log(user.uid);
         this.props.UPDATE_USER(user);
         this.setState({
           authenticated: this.props.logs.authenticated,
@@ -129,9 +132,12 @@ class App extends Component {
         <Switch>
           <Route path="/admin-login" component={Login} />
           <Route exact path="/" component={Home} />
+          <Route path="/home" component={Home} />
           <Route path="/portfolio" component={Portfolio} />
           <Route path="/contact" component={Contact} />
           <Route path="/about" component={About} />
+          <Route path="/products" component={Products} />
+          <Route path="/product/:productid" component={Products} />
           <PrivateRoute
             exact
             path="/report"
@@ -159,6 +165,13 @@ class App extends Component {
             component={Email}
             authenticated={this.props.logs.authenticated}
             redirecturl="/emails"
+          />
+          <PrivateRoute
+            exact
+            path="/addnewproduct"
+            component={AddNewProduct}
+            authenticated={this.props.logs.authenticated}
+            redirecturl="/addnewproduct"
           />
 
           <Redirect to="/not-found" />

@@ -48,7 +48,7 @@ class NavBar extends Component {
                     className="nav-link"
                     onClick={() => this.showHamburgerMenu(false)}
                     activeClassName="nav-link-selected"
-                    to="/"
+                    to="/home"
                   >
                     Home
                   </NavLink>
@@ -83,6 +83,16 @@ class NavBar extends Component {
                     Contact
                   </NavLink>
                 </li>
+                {/* <li className="nav-item mx-2">
+                  <NavLink
+                    className="nav-link"
+                    onClick={() => this.showHamburgerMenu(false)}
+                    activeClassName="nav-link-selected"
+                    to="/products"
+                  >
+                    Products
+                  </NavLink>
+                </li> */}
               </ul>
             </div>
           </div>
