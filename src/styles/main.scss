@@ -265,3 +265,14 @@ a{
     max-width: 750px;
     min-width: 350px;
 }
+
+.form-control{
+    background:transparent !important;
+    color: white !important;
+    &:focus{
+        background: transparent !important;
+        color: white !important;
+        box-shadow: $theme-primary-hover !important;
+        border-color:none !important;
+    }
+}

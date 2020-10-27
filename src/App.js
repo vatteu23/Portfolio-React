@@ -3,7 +3,7 @@ import { Route, Redirect, Switch, Link } from "react-router-dom";
 import "./App.css";
 import Home from "./components/home";
 import NavBar from "./components/navbar";
-import { fbAuth } from "./firebase";
+import { fbAuth, fbFirestore } from "./firebase";
 import Particles from "react-particles-js";
 import { connect } from "react-redux";
 import Dashboard from "./components/dashboard";
@@ -57,10 +57,18 @@ class App extends Component {
   };
 
   componentDidMount = () => {
-    
+    // fbFirestore.collection('email').add({
+    //   to: "vuday23@gmail.com",
+    //   message: {
+    //     subject: 'Your reservation is here !',
+    //     html: 'Hey This is your reservation for the event and it costs'
+        
+    //   }
+    // }).then(() => console.log('Queued email for delivery!'));
+
     fbAuth.onAuthStateChanged((user) => {
       if (user) {
-        console.log(user.uid);
+       
         this.props.UPDATE_USER(user);
         this.setState({
           authenticated: this.props.logs.authenticated,
